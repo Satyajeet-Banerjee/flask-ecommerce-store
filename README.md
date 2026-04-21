@@ -22,20 +22,19 @@ A full-stack eCommerce web application built using Flask.
 ## 📸 Screenshots
 
 ### Home Page
-![Home](static/screenshots/home.png)
-
-### Product Page
-![Product](static/screenshots/product.png)
+![Home](app/static/home.png)
 
 ### Cart
-![Cart](static/screenshots/cart.png)
+![Cart](app/static/cart.png)
 
 ### Checkout
-![Checkout](static/screenshots/checkout.png)
+![Checkout](app/static/checkout.png)
 
 ### Orders
-![Orders](static/screenshots/orders.png)
+![Orders](app/static/orders.png)
 
+### Razorpay
+![Orders](app/static/razorpay.png)
 ## ⚙️ Setup Instructions
 
 ```bash

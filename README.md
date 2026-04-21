@@ -38,7 +38,7 @@ A full-stack eCommerce web application built using Flask.
 ## ⚙️ Setup Instructions
 
 ```bash
-git clone https://github.com/your-username/flask-ecommerce-store.git
+git clone https://github.com/Satyajeet-Banerjee/flask-ecommerce-store.git
 cd flask-ecommerce-store
 pip install -r requirements.txt
 python run.py

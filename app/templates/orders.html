@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">My Orders</h2>
+
+{% if orders %}
+
+{% for order in orders %}
+<div class="card mb-3 p-3 shadow-sm">
+
+    <!-- Order Header -->
+    <div class="d-flex justify-content-between">
+        <div>
+            <h5>Order #{{ order.id }}</h5>
+            <p>Status: <strong>{{ order.status }}</strong></p>
+            <p>Date: {{ order.created_at.strftime('%d %b %Y, %I:%M %p') }}</p>
+        </div>
+
+        <div>
+            <h4>₹{{ "%.2f"|format(order.total_amount / 100) }}</h4>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- 🔥 Order Items -->
+    {% for item in order.items %}
+        <div class="d-flex align-items-center mb-2">
+
+            <img src="{{ item.product.image_url }}"
+                 style="width:70px; height:70px; object-fit:cover;"
+                 class="me-3">
+
+            <div>
+                <p class="mb-1"><strong>{{ item.product.name }}</strong></p>
+                <p class="mb-0">
+                    Qty: {{ item.quantity }} |
+                    ₹{{ item.price / 100 }}
+                </p>
+            </div>
+
+        </div>
+    {% endfor %}
+
+</div>
+{% endfor %}
+
+{% else %}
+    <p>You have no orders yet.</p>
+{% endif %}
+
+{% endblock %}

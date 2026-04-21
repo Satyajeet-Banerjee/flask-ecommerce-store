@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Product{% endblock %}
+
+{% block content %}
+
+<div class="row mt-4">
+
+    <!-- 🖼️ LEFT: IMAGE -->
+    <div class="col-md-5">
+        <div class="card p-3 shadow-sm">
+            <img src="{{ product.image_url }}"
+                 class="img-fluid"
+                 style="height:350px; object-fit:cover;">
+        </div>
+    </div>
+
+    <!-- 🛍️ RIGHT: DETAILS -->
+    <div class="col-md-7">
+        <div class="card p-4 shadow-sm">
+
+            <h2>{{ product.name }}</h2>
+
+            <h3 class="text-success mt-2">
+                ₹{{ "%.2f"|format(product.price / 100) }}
+            </h3>
+
+            <hr>
+
+            <p>
+                {{ product.description or "No description available." }}
+            </p>
+
+            <hr>
+
+            <!-- 🔥 ACTION BUTTONS -->
+            {% if current_user.is_authenticated %}
+
+                <a href="{{ url_for('cart.add_to_cart', product_id=product.id) }}"
+                   class="btn btn-warning btn-lg me-2">
+                   Add to Cart
+                </a>
+
+                <a href="{{ url_for('cart.view_cart') }}"
+                   class="btn btn-primary btn-lg">
+                   Go to Cart
+                </a>
+
+            {% else %}
+
+                <a href="{{ url_for('auth.login') }}"
+                   class="btn btn-secondary btn-lg">
+                   Login to Buy
+                </a>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
